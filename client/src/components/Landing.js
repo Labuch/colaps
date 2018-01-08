@@ -1,4 +1,5 @@
 import  React from 'react';
+import {Link} from 'react-router-dom';
 
 const Landing = () => {
 
@@ -7,7 +8,9 @@ const Landing = () => {
             <h1>
                 CoLaps
             </h1>
-            Launch your sample and make them loop ! 
+            <label>Launch your sample and make them loop !</label>
+            <br/>
+            <Link  to="/SampleLooper" className="red btn-flat left white-text">ENTER</Link>
         </div>
     );
 };
