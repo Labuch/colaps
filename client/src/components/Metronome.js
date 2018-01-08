@@ -1,18 +1,33 @@
 import React, {Component}  from 'react';
-import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 
 
 class Metronome extends Component {
 
+    renderBeet(){
+
+
+        let caseNumber = this.props.metronome.mode ;
+        let Cases = [];
+        for ( var i = 0; i < caseNumber; i++ ){
+            Cases.push(<input type ="radio" className="Beet-case" checked={ i === this.props.metronome.count}/> )
+        }
+        return Cases;
+
+    }
     render (){
         return (
-            <div className="row ">
-                This is the Metronome
+            <div className="Metronome">
+
+                {this.renderBeet()}
 
             </div>);
     }
 
 }
 
-export default connect(null, null)(Metronome);
+ function mapStateToProps({metronome}){
+    return { metronome };
+}
+
+export default connect(mapStateToProps, null)(Metronome);

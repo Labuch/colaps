@@ -8,9 +8,9 @@ import Player from './Player';
 const Looper = () => {
 
     return (
-        <div style={{textAlign:'center'}}>
-            <Metronome/>
+        <div >
             <SampleList/>
+            <Metronome/>
             <PatternMatrix/>
             <Player />
 

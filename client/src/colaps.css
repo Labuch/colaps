@@ -1,0 +1,43 @@
+.container {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%;
+}
+
+.container .row {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+}
+
+.row {
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+.Sample-list {
+
+    float:left;
+    margin: 0;
+    width: 20%;
+    height: 300px;
+
+}
+
+.Channel-case, .Beet-case {
+
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+
+}
+
+.Sample-select{
+
+    height: 40px;
+
+}
+
+
