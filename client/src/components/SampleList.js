@@ -12,13 +12,14 @@ class SampleList extends Component {
            SampleList.push(
               <div key={channel}>
                 <label className="ui label large">Channel {ChannelIndex}</label>
-                <select value={this.props.samples[channel]} className="Sample-select" >
+                <select value={this.props.samples[channel]} className="Sample-select"
+                        onChange={(e)=>this.props.setSample(channel, e.target.value)}>
                     <option value="kick">Kick</option>
                     <option value="snare">Snare</option>
                     <option value="clap">Clap</option>
                     <option value="tom">Tom</option>
                     <option value="crash">Crash</option>
-                    <option value="Knock">Knock</option>
+                    <option value="knock">Knock</option>
                 </select>
               </div>)
 

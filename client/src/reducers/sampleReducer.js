@@ -1,17 +1,16 @@
-import {ADD_CHANNEL} from '../actions/types'
+import {ADD_CHANNEL,SET_SAMPLE, DELETE_CHANNEL} from '../actions/types'
 
 export default function ( state = [], action){
-
-    console.log(action);
-
-    switch(action.type) {
+   switch(action.type) {
         case ADD_CHANNEL :
             return {...state , [action.payload]: "crash" };
-
+        case SET_SAMPLE :
+            return  {...state , [ action.payload.channelId]: action.payload.sample }
+        case DELETE_CHANNEL:
+            var newState = state
+            delete newState[action.payload.channelId];
+            return newState;
         default :
-            let samples =  {   channel_1: "kick",
-                               channel_2: "crash"
-            }
-            return samples;
+            return state;
     }
 }

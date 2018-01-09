@@ -1,5 +1,12 @@
-import {START_METRONOME, STOP_METRONOME, SET_TEMPO, SET_MODE, TICK_METRONOME, ADD_CHANNEL, SWITCH_CASE} from './types'
+import {
+    START_METRONOME, STOP_METRONOME, SET_TEMPO, SET_MODE, TICK_METRONOME, ADD_CHANNEL, SWITCH_CASE,
+    INIT_METRONOME, SET_SAMPLE, DELETE_CHANNEL,SET_KIT
+} from './types'
 
+
+export const initMetronome = () => async dispatch => {
+    dispatch({ type:INIT_METRONOME});
+};
 export const startMetronome = () => async dispatch => {
    dispatch({ type:START_METRONOME });
 };
@@ -24,6 +31,16 @@ export const addChannel = () => async dispatch => {
     dispatch({ type:ADD_CHANNEL, payload: Date.now()});
 };
 
-export const switchCase = (channelId,caseIndex ) => async dispatch => {
+export const deleteChannel = (channelId) => async dispatch => {
+    dispatch({ type:DELETE_CHANNEL, payload: {channelId}});
+};
+
+export const switchCase = (channelId, caseIndex ) => async dispatch => {
     dispatch({ type:SWITCH_CASE, payload: {channelId,caseIndex}});
+};
+export const setSample = (channelId, sample) => async dispatch => {
+    dispatch({ type:SET_SAMPLE, payload: {channelId, sample}});
+};
+export const setKit = (kit) => async dispatch => {
+    dispatch({ type:SET_KIT, payload: kit});
 };
