@@ -9,7 +9,7 @@ class AudioContextHandler {
 
         const sourceBuffer = ctx.createBufferSource();
         const request = new XMLHttpRequest();
-        request.open('GET','sample/Ratatat-Sunblocks.mp3', true);
+        request.open('GET','sample/file', true);
         request.responseType = 'arraybuffer';
         request.onload = function() {
             let audioData = request.response;
