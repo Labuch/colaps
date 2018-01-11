@@ -4,6 +4,11 @@ import * as actions from '../actions';
 
 class Player extends Component {
 
+        renderAddChannelButton(){
+            return (
+            <button onClick={()=>this.props.addChannel(this.props.metronome.mode)}>Add</button>
+            )
+        }
        render() {
         return (
             <div className="">
@@ -25,11 +30,11 @@ class Player extends Component {
                 <input className="" max="220" min="60" step="1" type="range" value={this.props.metronome.tempo} onChange={(e)=> {
                     ; this.props.setTempo(e.target.value)}} />
                 <div className="ui large buttons">
-                    <button className="ui button">3/4</button>
+                    <button className="ui button" onClick={()=>this.props.setMode(12)}>3/4</button>
                     <div className="or"></div>
-                    <button className="ui button">4/4</button>
+                    <button className="ui button" onClick={()=>this.props.setMode(16)}>4/4</button>
                 </div>
-
+                {this.renderAddChannelButton()}
             </div>
 
 

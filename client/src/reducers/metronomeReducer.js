@@ -3,7 +3,7 @@ import {START_METRONOME, STOP_METRONOME, SET_TEMPO, TICK_METRONOME, SET_MODE,INI
 
 
 export default function ( state = [], action){
-    console.log(action);
+
     switch(action.type) {
         case INIT_METRONOME :
             return {running: false , count : 0, mode: 16, tempo:90 ,kit:1}

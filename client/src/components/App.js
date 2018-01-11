@@ -8,9 +8,6 @@ import Landing from './Landing';
 import Looper from './Looper';
 
 class App extends Component {
-    componentDidMount(){
-
-    }
 
     render(){
         return (

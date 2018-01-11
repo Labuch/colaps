@@ -13,6 +13,7 @@
     height: 40px;
     margin-left: auto;
     margin-right: auto;
+    display: inline-block;
 }
 
 
@@ -37,6 +38,16 @@
 .Sample-select{
 
     height: 40px;
+
+}
+
+.delete{
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    background-color: black;
+    color: whitesmoke;
+
 
 }
 

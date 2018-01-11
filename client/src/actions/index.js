@@ -1,6 +1,6 @@
 import {
     START_METRONOME, STOP_METRONOME, SET_TEMPO, SET_MODE, TICK_METRONOME, ADD_CHANNEL, SWITCH_CASE,
-    INIT_METRONOME, SET_SAMPLE, DELETE_CHANNEL,SET_KIT
+    INIT_METRONOME, SET_SAMPLE, DELETE_CHANNEL, SET_KIT
 } from './types'
 
 
@@ -27,8 +27,8 @@ export const setTempo = (tempo) => async dispatch => {
     dispatch({ type:SET_TEMPO, payload:tempo });
 };
 
-export const addChannel = () => async dispatch => {
-    dispatch({ type:ADD_CHANNEL, payload: Date.now()});
+export const addChannel = (mode) => async dispatch => {
+    dispatch({ type:ADD_CHANNEL, payload: {channelId: Date.now(), mode }});
 };
 
 export const deleteChannel = (channelId) => async dispatch => {

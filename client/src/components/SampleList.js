@@ -1,19 +1,20 @@
 import React, {Component}  from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions';
+import _ from 'lodash';
 
 class SampleList extends Component {
 
     renderSampleList(){
        let SampleList = [];
        let ChannelIndex =0;
-       for (var channel in this.props.samples){
+        _.forIn( this.props.samples, (value, key) =>{
            ChannelIndex++;
            SampleList.push(
-              <div key={channel}>
+              <div key={key}>
                 <label className="ui label large">Channel {ChannelIndex}</label>
-                <select value={this.props.samples[channel]} className="Sample-select"
-                        onChange={(e)=>this.props.setSample(channel, e.target.value)}>
+                <select value={value} className="Sample-select"
+                        onChange={(e)=>this.props.setSample(key, e.target.value)}>
                     <option value="kick">Kick</option>
                     <option value="snare">Snare</option>
                     <option value="clap">Clap</option>
@@ -23,22 +24,17 @@ class SampleList extends Component {
                 </select>
               </div>)
 
-       }
+       })
        return SampleList;
 
     }
-    renderAddChannelButton(){
-        return (
-            <button onClick={()=>this.props.addChannel()}>Add</button>
-        )
-    }
+
 
     render (){
         return (
             <div className="row Sample-list">
                 <div className="row"> This is the SampleList</div>
                 {this.renderSampleList()}
-                {this.renderAddChannelButton()}
             </div>);
     }
 
