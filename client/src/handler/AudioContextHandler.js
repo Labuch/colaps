@@ -15,8 +15,6 @@ class AudioContextHandler {
             let audioData = request.response;
             ctx.decodeAudioData(audioData, function(buffer) {
                 sourceBuffer.buffer = buffer;
-                sourceBuffer.loop= true ;
-
             });
         };
         request.send();
