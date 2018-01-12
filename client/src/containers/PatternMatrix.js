@@ -1,6 +1,6 @@
 import React, {Component}  from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../actions';
+import * as actions from '../actions/index';
 import _ from 'lodash';
 
 class PatternMatrix extends Component {
@@ -12,10 +12,10 @@ class PatternMatrix extends Component {
               //creation d'un ligne
               let Row = [];
               value.forEach( (ele,index) => {
-                  Row.push(<input type="checkbox" className="Channel-case" checked={ele}
+                  Row.push(<input key={key+"case"+index} type="checkbox" className="Channel-case" checked={ele}
                                   onClick={()=>this.props.switchCase(key, index )} />);
               });
-               Row.push(<button className="ui delete button " onClick={()=>this.props.deleteChannel(key)}>X</button>)
+               Row.push(<button key={"delete"+key} className="ui delete button " onClick={()=>this.props.deleteChannel(key)}>X</button>)
               Div.push(<div key={key} className="row">{Row}</div>);
            })
             return Div;

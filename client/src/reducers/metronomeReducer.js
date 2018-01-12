@@ -1,7 +1,6 @@
 import {START_METRONOME, STOP_METRONOME, SET_TEMPO, TICK_METRONOME, SET_MODE,INIT_METRONOME, SET_KIT } from '../actions/types'
 
 
-
 export default function ( state = [], action){
 
     switch(action.type) {

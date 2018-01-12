@@ -34,7 +34,6 @@ export const addChannel = (mode) => async dispatch => {
 export const deleteChannel = (channelId) => async dispatch => {
     dispatch({ type:DELETE_CHANNEL, payload: {channelId}});
 };
-
 export const switchCase = (channelId, caseIndex ) => async dispatch => {
     dispatch({ type:SWITCH_CASE, payload: {channelId,caseIndex}});
 };

@@ -1,9 +1,9 @@
 import  React from 'react';
 
-import Metronome from './Metronome';
-import SampleList from './SampleList';
-import PatternMatrix from './PatternMatrix';
-import Player from './Player';
+import Metronome from '../containers/Metronome';
+import SampleList from '../containers/SampleList';
+import PatternMatrix from '../containers/PatternMatrix';
+import Player from '../containers/Player';
 
 const Looper = () => {
 

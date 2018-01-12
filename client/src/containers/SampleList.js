@@ -1,10 +1,17 @@
 import React, {Component}  from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../actions';
+import * as actions from '../actions/index';
 import _ from 'lodash';
 
 class SampleList extends Component {
 
+    renderAddChannelButton(){
+        return (
+            <div>
+                <button onClick={()=>this.props.addChannel(this.props.mode)}>Add</button>
+            </div>
+        )
+    }
     renderSampleList(){
        let SampleList = [];
        let ChannelIndex =0;
@@ -17,10 +24,8 @@ class SampleList extends Component {
                         onChange={(e)=>this.props.setSample(key, e.target.value)}>
                     <option value="kick">Kick</option>
                     <option value="snare">Snare</option>
-                    <option value="clap">Clap</option>
+                    <option value="snap">Snap</option>
                     <option value="tom">Tom</option>
-                    <option value="crash">Crash</option>
-                    <option value="knock">Knock</option>
                 </select>
               </div>)
 
@@ -35,14 +40,15 @@ class SampleList extends Component {
             <div className="row Sample-list">
                 <div className="row"> This is the SampleList</div>
                 {this.renderSampleList()}
+                {this.renderAddChannelButton()}
             </div>);
     }
 
 }
 
 
-function mapStateToProps({samples}){
-    return { samples };
+function mapStateToProps({samples, metronome}){
+    return { samples , mode: metronome.mode };
 }
 
 

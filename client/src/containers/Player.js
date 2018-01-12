@@ -1,14 +1,10 @@
 import React, {Component}  from 'react';
 import {connect} from 'react-redux';
-import * as actions from '../actions';
+import * as actions from '../actions/index';
 
 class Player extends Component {
 
-        renderAddChannelButton(){
-            return (
-            <button onClick={()=>this.props.addChannel(this.props.metronome.mode)}>Add</button>
-            )
-        }
+
        render() {
         return (
             <div className="">
@@ -34,7 +30,6 @@ class Player extends Component {
                     <div className="or"></div>
                     <button className="ui button" onClick={()=>this.props.setMode(16)}>4/4</button>
                 </div>
-                {this.renderAddChannelButton()}
             </div>
 
 
