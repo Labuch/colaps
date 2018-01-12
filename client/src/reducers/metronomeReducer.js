@@ -5,7 +5,7 @@ export default function ( state = [], action){
 
     switch(action.type) {
         case INIT_METRONOME :
-            return {running: false , count : 0, mode: 16, tempo:90 ,kit:1}
+            return {running: false , count : 0, mode: 16, tempo:130 ,kit:1}
         case STOP_METRONOME :
             return { ...state, running: false , count : 0 };
         case START_METRONOME:

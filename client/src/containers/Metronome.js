@@ -20,7 +20,7 @@ class Metronome extends Component {
     }
     render (){
         return (
-            <div className="Metronome">
+            <div className="row Metronome">
 
                 {this.renderBeet()}
 

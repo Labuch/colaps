@@ -37,7 +37,7 @@ class SampleList extends Component {
 
     render (){
         return (
-            <div className="row Sample-list">
+            <div className="Sample-list">
                 <div className="row"> This is the SampleList</div>
                 {this.renderSampleList()}
                 {this.renderAddChannelButton()}

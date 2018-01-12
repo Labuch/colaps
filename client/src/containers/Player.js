@@ -26,9 +26,9 @@ class Player extends Component {
                 <input className="" max="220" min="60" step="1" type="range" value={this.props.metronome.tempo} onChange={(e)=> {
                     ; this.props.setTempo(e.target.value)}} />
                 <div className="ui large buttons">
-                    <button className="ui button" onClick={()=>this.props.setMode(12)}>3/4</button>
+                    <button className="ui button" onClick={()=>this.props.setMode(12)} checked={this.props.metronome === 12}>3/4</button>
                     <div className="or"></div>
-                    <button className="ui button" onClick={()=>this.props.setMode(16)}>4/4</button>
+                    <button className="ui button" onClick={()=>this.props.setMode(16)} checked={this.props.metronome === 14}>4/4</button>
                 </div>
             </div>
 

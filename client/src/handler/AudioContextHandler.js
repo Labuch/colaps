@@ -33,7 +33,7 @@ class AudioContextHandler {
             console.log("action:",state.lastAction );
             if (state.lastAction.type == START_METRONOME )
             {
-                setTimeout(()=>store.dispatch({type: TICK_METRONOME}), 60000/state.metronome.tempo);
+                setTimeout(()=>store.dispatch({type: TICK_METRONOME}), 60000/(state.metronome.tempo * state.metronome.mode /4 ));
 
             }
             if (state.lastAction.type == TICK_METRONOME && state.metronome.running)
@@ -57,7 +57,7 @@ class AudioContextHandler {
                     sourceBuffer.start();
                 });
 
-                setTimeout(()=>store.dispatch({type: TICK_METRONOME}), 60000/state.metronome.tempo);
+                setTimeout(()=>store.dispatch({type: TICK_METRONOME}),  60000/(state.metronome.tempo * state.metronome.mode /4));
             }
 
         }
