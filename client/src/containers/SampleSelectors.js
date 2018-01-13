@@ -1,6 +1,8 @@
 import React, {Component}  from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../actions/index';
+import {LIST_SAMPLE} from '../constante';
+
 import _ from 'lodash';
 
 class SampleList extends Component {
@@ -12,6 +14,7 @@ class SampleList extends Component {
             </div>
         )
     }
+
     renderSampleList(){
        let SampleList = [];
        let ChannelIndex =0;
@@ -22,10 +25,10 @@ class SampleList extends Component {
                 <label className="ui label large">Channel {ChannelIndex}</label>
                 <select value={value.sample} className="Sample-select"
                         onChange={(e)=>this.props.setSample(key, e.target.value)}>
-                    <option value="kick">Kick</option>
-                    <option value="snare">Snare</option>
-                    <option value="snap">Snap</option>
-                    <option value="tom">Tom</option>
+                    {LIST_SAMPLE.map( item =>
+                        <option value={item}>{item}</option>
+                    )}
+
                 </select>
                   <input checked={this.props.samples[key].muted} onClick={(e)=>this.props.switchSoundChannel(key)} type="checkbox"/>
               </div>)

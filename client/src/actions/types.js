@@ -9,4 +9,7 @@ export const DELETE_CHANNEL = 'delete_channel';
 export const SWITCH_CASE = 'switch_case';
 export const SET_SAMPLE = 'set_sample';
 export const SWITCH_SOUND_CHANNEL = 'mute_channel';
+export const SAVE_SEQUENCE ='save_sequence';
+export const CHARGE_SEQUENCE ='charge_sequence';
+export const FETCH_USER ='fetch_user';
 

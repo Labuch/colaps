@@ -1,7 +1,7 @@
 import  React from 'react';
 
 import Metronome from '../containers/Metronome';
-import SampleList from '../containers/SampleList';
+import SampleList from '../containers/SampleSelectors';
 import PatternMatrix from '../containers/PatternMatrix';
 import Player from '../containers/Player';
 
@@ -17,5 +17,7 @@ const Looper = () => {
         </div>
     );
 };
+
+
 
 export default Looper;

@@ -10,7 +10,7 @@ const Landing = () => {
             </h1>
             <label>Launch your sample and make them loop !</label>
             <br/>
-            <Link  to="/SampleLooper" className="">ENTER</Link>
+            
         </div>
     );
 };

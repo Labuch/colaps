@@ -24,6 +24,13 @@ class Player extends Component {
                     <div className="or"></div>
                     <button className="ui button" onClick={()=>this.props.setMode(16)} >4/4</button>
                 </div>
+                <button  onClick={ ()=>this.props.saveSequence({parameters: {patterns: this.props.patterns, samples: this.props.samples}})} className="ui labeled icon button">
+                    <i className="save icon"></i>
+                    SAVE
+                </button>
+                <button  onClick={()=>this.props.chargeSequence()} className="ui labeled icon button">
+                    IMPORT
+                </button>
             </div>
 
 
@@ -32,8 +39,8 @@ class Player extends Component {
 
 }
 
-function mapStateToProps({metronome}){
-    return { metronome };
+function mapStateToProps({metronome, patterns, samples}){
+    return { metronome,  patterns , samples };
 }
 
 export default connect(mapStateToProps, actions)(Player);

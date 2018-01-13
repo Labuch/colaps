@@ -1,16 +1,17 @@
-import {START_METRONOME,  TICK_METRONOME } from '../actions/types'
+import {START_METRONOME,  TICK_METRONOME } from '../actions/types';
+import {LIST_SAMPLE} from '../constante';
 import _ from 'lodash';
 
 class AudioContextHandler {
 
 
 
-   constructor  (store){
+   constructor(store){
 
 
         let ctx = new AudioContext();
 
-        let listfile = ["kick","snap","snare","tom"];
+        let listfile = LIST_SAMPLE;
         let audioBuffers = {};
 
 
