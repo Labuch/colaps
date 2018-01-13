@@ -1,4 +1,4 @@
-import {START_METRONOME, STOP_METRONOME, SET_TEMPO, TICK_METRONOME, SET_MODE,INIT_METRONOME } from '../actions/types'
+import {START_METRONOME, STOP_METRONOME, SET_TEMPO, TICK_METRONOME, SET_MODE,INIT_METRONOME,CHARGE_SEQUENCE } from '../actions/types'
 
 
 export default function ( state = [], action){
@@ -8,6 +8,10 @@ export default function ( state = [], action){
             return {running: false , count : -1, mode: 16, tempo:130 }
         case STOP_METRONOME :
             return { ...state, running: false};
+        case CHARGE_SEQUENCE:
+            const as_pattern =(Object.values(action.payload[0].parameters.patterns)[0]) || false ;
+            let newmode = as_pattern ?  as_pattern.length: state.mode;
+            return { ...state, mode : newmode  };
         case START_METRONOME:
             return { ...state, running: true};
         case SET_TEMPO:

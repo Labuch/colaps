@@ -23,14 +23,14 @@ class SampleList extends Component {
             SampleList.push(
               <div key={key}>
                 <label className="ui label large">Channel {ChannelIndex}</label>
-                <select value={value.sample} className="Sample-select"
+                <select  key={"select"+key} value={value.sample} className="Sample-select"
                         onChange={(e)=>this.props.setSample(key, e.target.value)}>
                     {LIST_SAMPLE.map( item =>
-                        <option value={item}>{item}</option>
+                        <option key={"option"+item} value={item}>{item}</option>
                     )}
 
                 </select>
-                  <input checked={this.props.samples[key].muted} onClick={(e)=>this.props.switchSoundChannel(key)} type="checkbox"/>
+                  <input key={"muteButton"+key} checked={this.props.samples[key].muted} onClick={(e)=>this.props.switchSoundChannel(key)} type="checkbox"/>
               </div>)
 
        })
