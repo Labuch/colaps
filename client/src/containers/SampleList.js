@@ -17,16 +17,17 @@ class SampleList extends Component {
        let ChannelIndex =0;
         _.forIn( this.props.samples, (value, key) =>{
            ChannelIndex++;
-           SampleList.push(
+            SampleList.push(
               <div key={key}>
                 <label className="ui label large">Channel {ChannelIndex}</label>
-                <select value={value} className="Sample-select"
+                <select value={value.sample} className="Sample-select"
                         onChange={(e)=>this.props.setSample(key, e.target.value)}>
                     <option value="kick">Kick</option>
                     <option value="snare">Snare</option>
                     <option value="snap">Snap</option>
                     <option value="tom">Tom</option>
                 </select>
+                  <input checked={this.props.samples[key].muted} onClick={(e)=>this.props.switchSoundChannel(key)} type="checkbox"/>
               </div>)
 
        })

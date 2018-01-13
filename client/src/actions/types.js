@@ -8,6 +8,5 @@ export const ADD_CHANNEL = 'add_channel';
 export const DELETE_CHANNEL = 'delete_channel';
 export const SWITCH_CASE = 'switch_case';
 export const SET_SAMPLE = 'set_sample';
-export const SET_KIT = 'set_kit';
-export const LOG_ACTION = 'log_action';
+export const SWITCH_SOUND_CHANNEL = 'mute_channel';
 

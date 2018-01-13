@@ -1,4 +1,4 @@
-import {START_METRONOME, STOP_METRONOME, SET_TEMPO, TICK_METRONOME, SET_MODE,INIT_METRONOME, SET_KIT } from '../actions/types'
+import {START_METRONOME,  TICK_METRONOME } from '../actions/types'
 import _ from 'lodash';
 
 class AudioContextHandler {
@@ -30,34 +30,34 @@ class AudioContextHandler {
 
         function handleAction() {
            let state = store.getState()
-            console.log("action:",state.lastAction );
-            if (state.lastAction.type == START_METRONOME )
+            if (state.lastAction.type === START_METRONOME )
             {
                 setTimeout(()=>store.dispatch({type: TICK_METRONOME}), 60000/(state.metronome.tempo * state.metronome.mode /4 ));
 
             }
-            if (state.lastAction.type == TICK_METRONOME && state.metronome.running)
+            if (state.lastAction.type === TICK_METRONOME && state.metronome.running)
             {
+                setTimeout(()=>store.dispatch({type: TICK_METRONOME}),  60000/(state.metronome.tempo * state.metronome.mode /4));
 
                 const sourceBuffers = [];
                 _.forIn( state.patterns, (value, key) =>{
-                    const sourceBuffer = ctx.createBufferSource();
-                    if (value[state.metronome.count])
-                    {
-                            console.log(audioBuffers[state.samples[key]]);
-                        sourceBuffer.buffer = audioBuffers[state.samples[key]];
 
-                        sourceBuffers.push(sourceBuffer);
+                    if (!state.samples[key]["muted"])
+                    {
+                        const sourceBuffer = ctx.createBufferSource();
+                            if (value[state.metronome.count])
+                            {
+                                sourceBuffer.buffer = audioBuffers[state.samples[key]["sample"]];
+                                sourceBuffers.push(sourceBuffer);
+                            }
                     }
                 });
-
-
                 sourceBuffers.forEach((sourceBuffer) =>{
                     sourceBuffer.connect(ctx.destination);
                     sourceBuffer.start();
                 });
 
-                setTimeout(()=>store.dispatch({type: TICK_METRONOME}),  60000/(state.metronome.tempo * state.metronome.mode /4));
+
             }
 
         }
