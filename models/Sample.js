@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const SequenceSchema = new Schema({
+const SampleSchema = new Schema({
 
-    parameters: Object,
+    name: String,
+    buffer: ArrayBuffer,
     _user: {type: Schema.Types.ObjectId, ref:'User'}
 });
 
-mongoose.model('sequences', SequenceSchema);
+mongoose.model('samples', SampleSchema);
