@@ -12,8 +12,8 @@ class Header extends Component {
                 return (
                     <ul>
                         <li>
-                            <a href="/auth/facebook">
-                                login with facebook
+                            <a className="ui button blue " href="/auth/facebook">
+                                Login with facebook
                             </a>
                         </li>
 
@@ -22,8 +22,8 @@ class Header extends Component {
             default :
                 return (
                     <li>
-                        <a href="/api/logout">
-                            logout
+                        <a className="ui button blue " href="/api/logout">
+                            Logout
                         </a>
                     </li>
                 );

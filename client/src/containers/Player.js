@@ -28,7 +28,7 @@ class Player extends Component {
                     <i className="save icon"></i>
                     SAVE
                 </button>
-                <button  onClick={()=>this.props.chargeSequence()} className="ui labeled icon button">
+                <button  onClick={()=>this.props.chargeSequence()} className="ui button">
                     IMPORT
                 </button>
             </div>

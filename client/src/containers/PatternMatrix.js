@@ -15,7 +15,7 @@ class PatternMatrix extends Component {
                   Row.push(<input key={key+"case"+index} type="checkbox" className="Channel-case" checked={ele}
                                   onClick={()=>this.props.switchCase(key, index )} />);
               });
-               Row.push(<button key={"delete"+key} className="delete " onClick={()=>this.props.deleteChannel(key)}>X</button>)
+               Row.push(<button key={"delete"+key} className="ui button red " onClick={()=>this.props.deleteChannel(key)}>X</button>)
               Div.push(<div key={key} className="row">{Row}</div>);
            })
             return Div;

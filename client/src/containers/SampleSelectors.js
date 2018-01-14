@@ -10,7 +10,7 @@ class SampleList extends Component {
     renderAddChannelButton(){
         return (
             <div>
-                <button onClick={()=>this.props.addChannel(this.props.mode)}>Add</button>
+                <button  className="ui button teal" onClick={()=>this.props.addChannel(this.props.mode)}>Add</button>
             </div>
         )
     }
@@ -42,7 +42,7 @@ class SampleList extends Component {
     render (){
         return (
             <div className="Sample-list">
-                <div className="row"> This is the SampleList</div>
+                <div className="row"> Add any sample </div>
                 {this.renderSampleList()}
                 {this.renderAddChannelButton()}
             </div>);

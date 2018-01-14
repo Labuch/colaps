@@ -7,7 +7,7 @@ module.exports = app => {
     app.post('/api/sequence/save', requireLogin,
         async (req, res) => {
             const { parameters } = req.body;
-            Sequence.findOneAndUpdate({_user:req.user.id },{ parameters} ,{upsert :true} );
+            await Sequence.findOneAndUpdate({_user:req.user.id },{parameters},{upsert :true} );
             res.send('task added');
         });
 
