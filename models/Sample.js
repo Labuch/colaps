@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const SampleSchema = new Schema({
 
     name: String,
-    buffer: ArrayBuffer,
+    buffer: String,
     _user: {type: Schema.Types.ObjectId, ref:'User'}
 });
 

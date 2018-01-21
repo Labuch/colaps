@@ -4,6 +4,7 @@ import metronomeReducer from './metronomeReducer';
 import sampleReducer from './sampleReducer';
 import loggedActionReducer from './loggedActionReducer';
 import authReducer from  './authReducer';
+import libraryReducer from "./libraryReducer";
 
 
 export default combineReducers({
@@ -11,5 +12,6 @@ export default combineReducers({
     patterns: patternReducer,
     metronome:metronomeReducer,
     samples: sampleReducer,
-    lastAction: loggedActionReducer
+    lastAction: loggedActionReducer,
+    library: libraryReducer,
 });

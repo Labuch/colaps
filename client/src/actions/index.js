@@ -1,7 +1,9 @@
 import axios from 'axios';
+
 import {
     START_METRONOME, STOP_METRONOME, SET_TEMPO, SET_MODE, TICK_METRONOME, ADD_CHANNEL, SWITCH_CASE,
-    INIT_METRONOME, SET_SAMPLE, DELETE_CHANNEL, SWITCH_SOUND_CHANNEL ,FETCH_USER, SAVE_SEQUENCE ,CHARGE_SEQUENCE
+    INIT_METRONOME, SET_SAMPLE, DELETE_CHANNEL, SWITCH_SOUND_CHANNEL ,FETCH_USER, SAVE_SEQUENCE ,CHARGE_SEQUENCE,
+    SAVE_SAMPLE,FETCH_SAMPLES, PLAY_SAMPLE ,DELETE_SAMPLE
 } from './types'
 
 
@@ -16,6 +18,33 @@ export const saveSequence = (parameters) => async dispatch => {
 export const chargeSequence = () => async dispatch => {
     const res = await axios.get('/api/sequence');
     dispatch({ type:CHARGE_SEQUENCE, payload: res.data});
+};
+
+export const saveSample = (name, buffer) => async dispatch => {
+
+    const data  = new FormData();
+    data.append('buffer', buffer);
+    data.append('name', name);
+
+    const res = await axios.post('/api/sample/save', data);
+    dispatch({type: SAVE_SAMPLE, payload: res});
+};
+
+
+export const deleteSample = (sampleId) => async dispatch => {
+
+    const res = await axios.delete('/api/sample/delete', { "params": {sampleId}});
+    dispatch({type: DELETE_SAMPLE, payload: res});
+};
+
+export const playSample = (sampleId) => async dispatch => {
+    dispatch({type: PLAY_SAMPLE, payload: sampleId});
+};
+
+
+export const fetchSamples = () => async dispatch => {
+    const res = await axios.get('/api/samples');
+    dispatch({ type:FETCH_SAMPLES, payload:res.data});
 };
 
 export const initMetronome = () => async dispatch => {

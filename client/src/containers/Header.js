@@ -34,7 +34,7 @@ class Header extends Component {
         return (
             <nav>
                 <div className="nav-wrapper">
-                    <Link to={this.props.auth ? '/SampleLooper': ''}
+                    <Link to={this.props.auth ? '/': ''}
                           className="left brand-logo" >
                         COLAPS
                     </Link>

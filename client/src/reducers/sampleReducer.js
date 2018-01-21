@@ -4,7 +4,7 @@ export default function ( state = [], action){
 
     switch(action.type) {
         case ADD_CHANNEL :
-            return {...state , [action.payload.channelId]: {sample : "kick", muted:false } };
+            return {...state , [action.payload.channelId]: {sample : "", muted:false } };
         case SET_SAMPLE :
             var newsample = state[action.payload.channelId];
             newsample.sample = action.payload.sample;

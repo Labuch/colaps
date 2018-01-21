@@ -9,6 +9,7 @@ import reduxThunk from 'redux-thunk';
 
 import App from './containers/App';
 import AudioContextHandler from './handler/AudioContextHandler';
+import SampleHandler from './handler/SamplerHandler';
 import reducers from './reducers';
 
 
@@ -18,7 +19,7 @@ const store = createStore(reducers, {}, composeEnhancers(applyMiddleware( reduxT
 
 
 var audioContextHandler = new AudioContextHandler(store);
-
+var sampleHandler = new SampleHandler(store);
 
 ReactDOM.render(
     <Provider store={store}><App/></Provider>,

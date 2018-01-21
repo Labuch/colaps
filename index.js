@@ -6,6 +6,7 @@ const cookieSession  = require('cookie-session');
 const passport = require('passport');
 require('./models/User');
 require('./models/Sequence');
+require('./models/Sample');
 require('./services/passport');
 
 
@@ -26,8 +27,8 @@ app.use(passport.session());
 app.use(bodyParser.json());
 
 require('./routes/authRoutes')(app);
-
 require('./routes/sequenceRoutes')(app);
+require('./routes/samplesRoutes')(app);
 
 if (process.env.NODE_ENV === 'production')
 {

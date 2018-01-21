@@ -17,8 +17,7 @@ class Player extends Component {
                     Pause
                 </button>
                 <label className="ui label large">Bpm : {this.props.metronome.tempo}</label>
-                <input className="" max="220" min="60" step="1" type="range" value={this.props.metronome.tempo} onChange={(e)=> {
-                    ; this.props.setTempo(e.target.value)}} />
+                <input className="" max="220" min="60" step="1" type="range" value={this.props.metronome.tempo} onChange={(e)=>this.props.setTempo(e.target.value)} />
                 <div className="ui large buttons">
                     <button className="ui button" onClick={()=>this.props.setMode(12)} >3/4</button>
                     <div className="or"></div>

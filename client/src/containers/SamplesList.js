@@ -6,10 +6,29 @@ import * as actions from '../actions/index';
 
 class SamplesList extends Component {
 
+    constructor(props)
+    {
+        super(props);
+        {this.props.fetchSamples()}
+    }
+    renderSample(){
+        return this.props.library.map( (sample,index) => {
+            return (
+                <div key={"case"+index} className="Sample-card">
+                    <label key={"sample_label"+index} >{sample.name}</label>
+                    <input key={"sample_play_button"+sample._id} type="button" value=">" onClick={()=>this.props.playSample(sample._id)}/>
+                    <input key={"sample_delete_button"+sample._id} type="button" value="X" onClick={()=>this.props.deleteSample(sample._id)}
+                            display ={this.props.auth._id == sample._user ? "block" : "none" }/>
+                </div>
+            )
+        });
+    }
+
     render(){
         return (
-            <div className=" ">
-            Voici la liste des samples disponible
+
+            <div className="Sample-list">
+                {this.renderSample()}
             </div>
         )
 
@@ -18,8 +37,8 @@ class SamplesList extends Component {
 }
 
 
-function mapStateToProps({library}){
-    return { library };
+function mapStateToProps({auth, library}){
+    return { auth, library };
 }
 
 

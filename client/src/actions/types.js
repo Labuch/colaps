@@ -12,4 +12,10 @@ export const SWITCH_SOUND_CHANNEL = 'mute_channel';
 export const SAVE_SEQUENCE ='save_sequence';
 export const CHARGE_SEQUENCE ='charge_sequence';
 export const FETCH_USER ='fetch_user';
+export const FETCH_SAMPLES ='fetch_samples';
+export const SAVE_SAMPLE ='save_sample';
+export const CHARGE_SAMPLES ='charge_samples';
+export const PLAY_SAMPLE ='play_sample';
+export const DELETE_SAMPLE = 'delete_sample';
+
 

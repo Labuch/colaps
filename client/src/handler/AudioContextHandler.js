@@ -1,5 +1,4 @@
-import {START_METRONOME,  TICK_METRONOME } from '../actions/types';
-import {LIST_SAMPLE} from '../constante';
+import {FETCH_SAMPLES, START_METRONOME, TICK_METRONOME} from '../actions/types';
 import _ from 'lodash';
 
 class AudioContextHandler {
@@ -11,26 +10,30 @@ class AudioContextHandler {
 
         let ctx = new AudioContext();
 
-        let listfile = LIST_SAMPLE;
         let audioBuffers = {};
 
 
-        listfile.forEach((name)=>{
-            const request = new XMLHttpRequest();
-            request.open('GET','sample/'+ name +'.wav', true);
-            request.responseType = 'arraybuffer';
-            request.onload = function() {
-                ctx.decodeAudioData(request.response, function(buffer) {
-                    audioBuffers[name] = buffer;
-                });
-            };
-            request.send();
-
-        });
 
 
         function handleAction() {
            let state = store.getState()
+
+            if (state.lastAction.type === FETCH_SAMPLES)
+            {
+                state.lastAction.payload.forEach((sample)=>{
+                    var binarydata = sample.buffer.split(',')[1];
+                    var buf = Buffer.from(binarydata, 'base64');
+                    var arrayBuffer = new ArrayBuffer(buf.length);
+                    var view = new Uint8Array(arrayBuffer);
+                    for (var i = 0; i < buf.length; ++i) {
+                        view[i] = buf[i];
+                    }
+                    ctx.decodeAudioData(arrayBuffer, function(bufferdecoded) {
+                        audioBuffers[sample._id] = bufferdecoded;
+                    });
+                });
+            }
+
             if (state.lastAction.type === START_METRONOME )
             {
                 setTimeout(()=>store.dispatch({type: TICK_METRONOME}), 60000/(state.metronome.tempo * state.metronome.mode /4 ));
@@ -46,11 +49,11 @@ class AudioContextHandler {
                     if (!state.samples[key]["muted"])
                     {
                         const sourceBuffer = ctx.createBufferSource();
-                            if (value[state.metronome.count])
-                            {
-                                sourceBuffer.buffer = audioBuffers[state.samples[key]["sample"]];
-                                sourceBuffers.push(sourceBuffer);
-                            }
+                        if (value[state.metronome.count])
+                        {
+                            sourceBuffer.buffer = audioBuffers[state.samples[key]["sample"]];
+                            sourceBuffers.push(sourceBuffer);
+                        }
                     }
                 });
                 sourceBuffers.forEach((sourceBuffer) =>{
@@ -60,6 +63,7 @@ class AudioContextHandler {
 
 
             }
+
 
         }
 
