@@ -29,7 +29,6 @@ module.exports = app => {
     app.get('/api/samples',requireLogin,
         async (req,res) => {
             const samples = await Sample.find({_user: { $in : [ "5a59f81d914458139023b1b0" , req.user.id ] }});
-
             res.send(samples);
 
         }

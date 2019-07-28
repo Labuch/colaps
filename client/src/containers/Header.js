@@ -1,6 +1,18 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
+
+const HeaderContainer = styled.div`
+border-bottom: 0.2em solid #825830;
+justify-content:space-around;
+`
+
+const HeaderLogo = styled(Link)`
+    font-size:20px;
+    padding-left:20px;
+    color:#968150;
+`
 
 class Header extends Component {
 
@@ -10,45 +22,36 @@ class Header extends Component {
                 return ;
             case false:
                 return (
-                    <ul>
-                        <li>
-                            <a className="ui button blue " href="/auth/facebook">
-                                Login with facebook
-                            </a>
-                        </li>
-
-                    </ul>
+                    <a className="ui button blue " href="/auth/facebook">
+                        Login with facebook
+                    </a>
                 );
             default :
                 return (
-                    <li>
-                        <a className="ui button blue " href="/api/logout">
-                            Logout
-                        </a>
-                    </li>
+                    <a className="ui button blue " href="/api/logout">
+                        Logout
+                    </a>
                 );
         }
     }
 
     render(){
         return (
-            <nav>
-                <div className="nav-wrapper">
-                    <Link to={this.props.auth ? '/': ''}
-                          className="left brand-logo" >
+                <HeaderContainer>
+                    <HeaderLogo to={this.props.auth ? '/': ''} >
                         COLAPS
-                    </Link>
+                    </HeaderLogo>
                     <ul className="row">
                         {this.renderContent()}
                     </ul>
-                </div>
-            </nav>
+                </HeaderContainer>
+           
         );
     }
 }
 
 function mapStateToProps({auth}){
-    return { auth};
+    return {auth};
 }
 
 

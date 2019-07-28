@@ -7,16 +7,13 @@ import SamplesList from './SamplesList';
 
 class SampleLibrary extends Component {
 
-render(){
-    return (<div>
-            <SamplesList/>
-            <SampleForm/>
-    </div>)
-
+    render(){
+        return (<div>
+                <SamplesList/>
+                <SampleForm/>
+        </div>)
+    }
 }
-
-}
-
 
 function mapStateToProps({samples, metronome}){
     return { samples , mode: metronome.mode };

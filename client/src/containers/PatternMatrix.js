@@ -1,40 +1,91 @@
 import React, {Component}  from 'react';
 import {connect} from 'react-redux';
+import styled from'styled-components';
 import * as actions from '../actions/index';
-import _ from 'lodash';
+
+
+
+const Case = styled.input`
+width: 20px;
+height: 40px;
+margin: 2px;
+background-color: #db7290;
+border: 1px solid white;
+&:after {   
+    content: "";
+    display: block;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 0.3) inset; 
+    background: ${props => Math.floor(props.index / props.mode) %2 ? '#232323' : '#484848'};
+    }
+&:checked {
+    &:after {   
+    content: "";
+    display: block;
+    border-radius:5px;
+    width: 100%;
+    height: 100%;
+    box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 0.3) inset; 
+    background: #e4c986;
+    }
+}  
+`  
+
+const MatrixContainer = styled.div`
+display:flex;
+flex-direction:column;`
+
+const Row = styled.div`
+  border-radius:5px;
+  background: black;
+  display:flex;
+  width:fit-content;
+  border-radius:3px;
+`
+const DeleteButton = styled.button`
+background:#626b75;
+text-decoration: none;
+border-style: none;
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+    outline: none;
+  }
+`
 
 class PatternMatrix extends Component {
 
-    renderPattern(){
 
-            let Div = [];
-           _.forIn( this.props.patterns, (value, key) =>{
-              //creation d'un ligne
-              let Row = [];
-              value.forEach( (ele,index) => {
-                  Row.push(<input key={key+"case"+index} type="checkbox" className="Channel-case" checked={ele}
-                                  onClick={()=>this.props.switchCase(key, index )} />);
-              });
-               Row.push(<button key={"delete"+key} className="ui button red " onClick={()=>this.props.deleteChannel(key)}>X</button>)
-              Div.push(<div key={key} className="row">{Row}</div>);
-           })
-            return Div;
+    getmode(){
+        return this.props.metronome.mode/8 >= 3 ? this.props.metronome.mode / 8 : this.props.metronome.mode/ 4 ; 
     }
 
+    renderPattern(){
+       return Object.keys(this.props.patterns).map((key)=> {
+            const row = this.props.patterns[key].map((ele,index)=>{
+                return <Case key={key+"case"+index} 
+                            type="checkbox" checked={ele}
+                            index= {index} mode={this.getmode()}
+                            onClick={()=>this.props.switchCase(key, index)} />
+            });
+            row.push(<DeleteButton key={"delete"+key} onClick={()=>this.props.deleteChannel(key)}>X</DeleteButton>);
+            return <Row key={key}>{row}</Row>
+        });
+            
+    }
 
     render (){
-
        return (
-            <div className=" Pattern-matrix">
+            <MatrixContainer>
                 {this.renderPattern()}
-
-            </div>);
+            </MatrixContainer>);
     }
 
 }
 
-function mapStateToProps({patterns}){
-    return { patterns };
+function mapStateToProps({patterns, metronome }){
+    return { patterns, metronome};
 }
 
 export default connect(mapStateToProps, actions)(PatternMatrix);

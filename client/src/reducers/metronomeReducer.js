@@ -9,9 +9,9 @@ export default function ( state = [], action){
         case STOP_METRONOME :
             return { ...state, running: false};
         case CHARGE_SEQUENCE:
-            const as_pattern =(Object.values(action.payload[0].parameters.patterns)[0]) || false ;
-            let newmode = as_pattern ?  as_pattern.length: state.mode;
-            return { ...state, mode : newmode  };
+            const has_pattern =(Object.values(action.payload[0].parameters.patterns)[0]) || false ;
+            let newMode = has_pattern ?  has_pattern.length: state.mode;
+            return { ...state, mode : newMode  };
         case START_METRONOME:
             return { ...state, running: true};
         case SET_TEMPO:

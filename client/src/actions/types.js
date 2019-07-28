@@ -17,5 +17,6 @@ export const SAVE_SAMPLE ='save_sample';
 export const CHARGE_SAMPLES ='charge_samples';
 export const PLAY_SAMPLE ='play_sample';
 export const DELETE_SAMPLE = 'delete_sample';
+export const LOG_OUT = 'log_out';
 
 

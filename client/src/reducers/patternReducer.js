@@ -1,5 +1,24 @@
 import {ADD_CHANNEL, SWITCH_CASE, DELETE_CHANNEL, SET_MODE, CHARGE_SEQUENCE} from '../actions/types'
-import _ from 'lodash';
+
+const convert3to4 = (array) => {
+    let index = array.length;
+    while (index > 2) {
+        array.splice(index,0,0);
+        index = index - 3; 
+    }
+    return array;
+}
+const convert4to3 = (array) => {
+    let index = array.length;
+    while (index > 3) {
+        array.splice(index-1,1);
+        index = index - 4; 
+    }
+    return array;
+}
+
+const getmode = (lenght) => lenght/8 >=3 ? lenght/8 : lenght/4; 
+    
 
 export default function ( state = [], action) {
 
@@ -18,26 +37,31 @@ export default function ( state = [], action) {
             newpattern[action.payload.caseIndex] = !newpattern[action.payload.caseIndex];
             return { ...state,  [action.payload.channelId] : newpattern };
         case SET_MODE:
-            newState={...state};
-            _.forIn(newState, (value, key) =>{
-                if (value.length > action.payload)
+            let channels = {...state};
+            return Object.entries(channels).map((entrie)=>{
+                let length = entrie[1].length;
+                let channel = entrie[1];
+
+                if (getmode(length) > getmode(action.payload))
                 {
-                    value.splice(15,1);
-                    value.splice(11,1);
-                    value.splice(7,1);
-                    value.splice(3,1);
-                    newState[key]= value;
+                    channel = convert4to3(channel);
                 }
-                if (value.length < action.payload)
+                if (getmode(length) < getmode(action.payload))
                 {
-                    value.splice(11,0,0);
-                    value.splice(8,0,0);
-                    value.splice(5,0,0);
-                    value.splice(2,0,0);
-                    newState[key]= value;
+                    channel = convert3to4(channel);
                 }
-            })
-            return newState ;
+                length = channel.length;
+                if (length > action.payload){
+                    channel = channel.slice(0,action.payload);
+                }
+                if (length < action.payload){
+                    channel = [...channel, ...new Array(action.payload-length).fill(0)];
+                }
+
+                return [entrie[0],channel];
+            }).reduce((accu,channel)=>{
+                accu[channel[0]] = channel[1]
+                return accu;}, {});
         default :
             return state;
     }

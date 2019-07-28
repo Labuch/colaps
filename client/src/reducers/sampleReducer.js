@@ -10,8 +10,7 @@ export default function ( state = [], action){
             newsample.sample = action.payload.sample;
             return { ...state,  [action.payload.channelId] : newsample };
         case CHARGE_SEQUENCE:
-            let samples = action.payload[0].parameters.samples;
-            return { ...samples};
+            return { ...action.payload[0].parameters.samples};
         case SWITCH_SOUND_CHANNEL:
             var newsample = state[action.payload.channelId];
             newsample.muted = !newsample.muted;

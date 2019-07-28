@@ -1,27 +1,59 @@
 import  React from 'react';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
+
+const CenterLogo = styled.div`
+    font-size: 50px;
+    flex:5;
+    display:flex;
+    color:#968150;
+    justify-content:center;
+    align-items:center;
+
+`  
+const Button = styled(Link)`
+   background-color: #b39b72;
+   min-width: 150px;
+   line-height: 3em;
+   text-align: center;
+   border-radius: 0.28571429rem;
+   color:grey;
+` 
+const Content = styled.div`
+    display:flex;
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    justify-content:space-between;
+`
+const Row = styled.div`
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:50%;
+    flex-direction:row;
+    flex:1;
+`
 
 const Landing = () => {
 
     return (
-        <div className="container" style={{textAlign:'center'}}>
-            <h1>
-                CoLaps
-            </h1>
+        <Content>
+            <CenterLogo>
+                <p>CoLaps</p>
+            </CenterLogo>
+            <Row>
+                <Button to={'/SampleLooper'}>
+                Looper
+                </Button>
 
-            <br/>
-
-            <Link to={'/SampleLooper'} className="Link">
-                Launch your sample and make them loop !
-            </Link>
-
-            <Link to={'/SampleLibrary'} className="Link" >
-                Manage Your sample Library
-            </Link>
-
-
+                <Button to={'/SampleLibrary'}>
+                    Sample Library
+                </Button> 
+            </Row>
             
-        </div>
+        </Content>
     );
 };
 

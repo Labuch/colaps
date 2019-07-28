@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
     START_METRONOME, STOP_METRONOME, SET_TEMPO, SET_MODE, TICK_METRONOME, ADD_CHANNEL, SWITCH_CASE,
     INIT_METRONOME, SET_SAMPLE, DELETE_CHANNEL, SWITCH_SOUND_CHANNEL ,FETCH_USER, SAVE_SEQUENCE ,CHARGE_SEQUENCE,
-    SAVE_SAMPLE,FETCH_SAMPLES, PLAY_SAMPLE ,DELETE_SAMPLE
+    SAVE_SAMPLE,FETCH_SAMPLES, PLAY_SAMPLE ,DELETE_SAMPLE, LOG_OUT
 } from './types'
 
 
@@ -11,6 +11,11 @@ export const fetchUser = () => async dispatch => {
     const res = await axios.get('/api/current_user');
     dispatch({ type:FETCH_USER, payload:res.data});
 };
+
+export const logout = () => async dispatch => {
+    const res = await axios.get('/api/logout');
+    dispatch({ type:LOG_OUT, payload:res});
+}
 export const saveSequence = (parameters) => async dispatch => {
     const res = await axios.post('/api/sequence/save', parameters);
     dispatch({type: SAVE_SEQUENCE, payload: res});

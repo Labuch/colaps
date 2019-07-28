@@ -12,9 +12,6 @@ class AudioContextHandler {
 
         let audioBuffers = {};
 
-
-
-
         function handleAction() {
            let state = store.getState()
 
