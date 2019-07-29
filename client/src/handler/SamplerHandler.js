@@ -12,8 +12,6 @@ class SamplerHandler {
 
         function handleAction() {
             let state = store.getState()
-
-
             if (state.lastAction.type === FETCH_SAMPLES)
             {
                 state.lastAction.payload.forEach((sample)=>{
@@ -38,12 +36,9 @@ class SamplerHandler {
             }
 
         }
-
         store.subscribe(() => { handleAction()
         });
     }
-
-
 
 }
 
