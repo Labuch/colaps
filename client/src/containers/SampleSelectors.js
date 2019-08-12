@@ -7,8 +7,12 @@ import mutedImage from '../assets/muted.png';
 import unmutedImage from '../assets/unmuted.png';
 
 const SampleSelectorContainer = styled.div`
-width:13%;
-min-width: 150px;
+background: black;
+border-radius: 0.28571429rem;
+width:fit-content;
+margin-left:30px;
+padding: 5px;
+
 `
 const Button = styled.button`
 font-family: 'Digital';
@@ -16,7 +20,6 @@ background: #b39b72;
 border-radius:0.5em;
 text-align: center;
 border-radius: 0.28571429rem;
-box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.3) inset; 
 width:110px;
 color:grey;
 text-decoration: none;
@@ -33,24 +36,23 @@ height:30px;
 
 const MuteButton = styled.input`
 border-radius: 0.28571429rem;
-margin:10px;
+width: 2em; 
 &:after {   
     content:"";
     background-color:#626b75;
     background-position:center;
     background-image: url(${props => props.checked ? mutedImage : unmutedImage});;
-    background-size: 2em 2em;
+    background-size: 2em 40px;
     display: flex;
     width: 2em; 
-    height: 2em;
+    height: 40px;
     border-radius: 0.28571429rem;
-    box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 0.3) inset; 
     }
 `
 
 const ChannelNumber = styled.label`
 border-radius: 0.28571429rem;
-line-height: 1;
+flex:1;
 font-size:1.2em;
 width:1.3em;
 `
@@ -64,7 +66,6 @@ width:60px;
 padding-left:10px;
 font-family:'Digital';
 border-style: none;
-box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.3) inset; 
 &:focus, &:hover, &:visited, &:link, &:active {
     text-decoration: none;
     outline: none;
@@ -78,10 +79,14 @@ box-shadow: 1px 2px 3px 2px rgba(0, 0, 0, 0.3) inset;
 `
 
 const SampleRow = styled.div`
-align-items:center;
-height:40px;
+display:flex;
+height:44px;
 `
 
+const SidebarContainer = styled.div`
+width:13%;
+min-width: 150px;
+`
 
 class SampleList extends Component {
 
@@ -101,28 +106,28 @@ class SampleList extends Component {
        return Object.keys(this.props.samples).map((key,index)=>{
            return (
            <SampleRow key={key}>
-            <ChannelNumber className="ui label large">{index+1}</ChannelNumber>
-            <SampleSelector  key={"select"+key} value={this.props.samples[key].sample}
+                <ChannelNumber className="ui label large">{index+1}</ChannelNumber>
+                <SampleSelector  key={"select"+key} value={this.props.samples[key].sample}
                     onChange={(e)=>this.props.setSample(key, e.target.value)}>
-                {this.props.library.map(item =>
-                    <option key={"option"+item._id} value={item._id}>{item.name}</option>
-                )}
-
-            </SampleSelector>
-              <MuteButton key={"muteButton"+key} checked={this.props.samples[key].muted} onClick={()=>this.props.switchSoundChannel(key)} type="checkbox">
-              </MuteButton>
-          </SampleRow>)
+                    {this.props.library.map(item =>
+                        <option key={"option"+item._id} value={item._id}>{item.name}</option>
+                    )}
+                </SampleSelector>
+                <MuteButton key={"muteButton"+key} checked={this.props.samples[key].muted} onClick={()=>this.props.switchSoundChannel(key)} type="checkbox"/>
+            </SampleRow>)
        });
     }
 
 
     render (){
         return (
-            <SampleSelectorContainer>
+            <SidebarContainer>
                 <Blanck/>
+                <SampleSelectorContainer>
                 {this.renderSampleSelector()}
                 {this.renderAddChannelButton()}
-            </SampleSelectorContainer>);
+                </SampleSelectorContainer>
+            </SidebarContainer>);
     }
 
 }

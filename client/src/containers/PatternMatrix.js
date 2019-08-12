@@ -4,7 +4,6 @@ import styled from'styled-components';
 import * as actions from '../actions/index';
 
 
-
 const Case = styled.input`
 width: 20px;
 height: 40px;
@@ -17,7 +16,6 @@ border: 1px solid white;
     border-radius: 5px;
     width: 100%;
     height: 100%;
-    box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 0.3) inset; 
     background: ${props => Math.floor(props.index / props.mode) %2 ? '#232323' : '#484848'};
     }
 &:checked {
@@ -27,7 +25,6 @@ border: 1px solid white;
     border-radius:5px;
     width: 100%;
     height: 100%;
-    box-shadow: -1px 2px 10px 3px rgba(0, 0, 0, 0.3) inset; 
     background: #e4c986;
     }
 }  
@@ -35,7 +32,9 @@ border: 1px solid white;
 
 const MatrixContainer = styled.div`
 display:flex;
-flex-direction:column;`
+width: fit-content;
+flex:1;
+flex-direction: column;`
 
 const Row = styled.div`
   border-radius:5px;
@@ -47,6 +46,9 @@ const Row = styled.div`
 const DeleteButton = styled.button`
 background:#626b75;
 text-decoration: none;
+border-radius:0.3rem;
+padding-top: 3px;
+padding-bottom:3px;
 border-style: none;
   &:focus, &:hover, &:visited, &:link, &:active {
     text-decoration: none;

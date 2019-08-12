@@ -10,7 +10,9 @@ const LooperContainer = styled.div`
   width: 100%;
 `;
 const MusicBox = styled.div`
-  width: 60%;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
 `;
 
 const Looper = () => {
