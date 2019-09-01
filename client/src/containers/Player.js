@@ -12,14 +12,15 @@ justify-content:center;
 align-content:center;
 `
 const PlayerRow = styled.div`
-flex:1 1 250px;
+flex:1 1 230px;
+flex-wrap: 0 ;
+max-height:40px;
 display:flex;
-flex-direction:row;
-
+min-width:200px;
+justify-content: space-between;
 `
 
 const Range = styled.input`
-
 `
 
 const StyledButton = styled.button`
@@ -38,6 +39,7 @@ border-style: none;
 const ModeSelector = styled.div`
 display:flex;
 flex-wrap:wrap;
+max-width:100px;
 `
 
 const ModeButton = styled.button`
@@ -91,7 +93,6 @@ class Player extends Component {
                 </ModeSelector>
                </PlayerRow>
                <PlayerRow>
-                
                 <Label>Bpm : {this.props.metronome.tempo}</Label>
                 <Range max="220" min="60" step="1" type="range" value={this.props.metronome.tempo} onChange={(e)=>this.props.setTempo(e.target.value)} />
                     <StyledButton onClick={ ()=>this.props.saveSequence({parameters: {patterns: this.props.patterns, samples: this.props.samples}})} >
