@@ -16,6 +16,12 @@ const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-style: normal;
   }
+  @font-face {
+    font-family: 'Hp';
+    src: url('../assets/fonts/hp-simplified-265.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
 `
 
 

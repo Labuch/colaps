@@ -1,7 +1,5 @@
-module.exports = {
-    facebookClientID:process.env.FACEBOOK_CLIENT_ID,
-    facebookClientSecret:process.env.FACEBOOK_CLIENT_SECRET,
-    mongoURI: process.env.MONGODB_URI,
-    cookieKey:process.env.COOKIE_KEY
-
-};
+if (process.env.NODE_ENV ==='production'){
+  module.exports = require('./keys-prod.js');
+} else {
+  module.exports = require('./keys-dev.js');
+}

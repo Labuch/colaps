@@ -2,6 +2,8 @@ import  React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
+import Logo from './Logo';
+
 const CenterLogo = styled.div`
     font-size: 50px;
     flex:5;
@@ -41,7 +43,7 @@ const Landing = () => {
     return (
         <Content>
             <CenterLogo>
-                <p>CoLaps</p>
+               <Logo/>
             </CenterLogo>
             <Row>
                 <Button to={'/SampleLooper'}>
