@@ -11,6 +11,7 @@ const CenterLogo = styled.div`
     color:#968150;
     justify-content:center;
     align-items:center;
+    user-select:none;
 
 `  
 const Button = styled(Link)`
