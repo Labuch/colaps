@@ -4,12 +4,12 @@ const passport = require('passport');
 module.exports = (app) => {
 
    app.get(
-        '/auth/facebook',
-        passport.authenticate('facebook',
+        '/auth/facebook',(req, res) => {
+            passport.authenticate('facebook',
             {
                 scope:'email'
             }
-        )
+        )}
     );
     app.get(
         '/auth/facebook/callback',
