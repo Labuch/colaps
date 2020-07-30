@@ -18,7 +18,7 @@ const MusicBox = styled.div`
 const Looper = () => {
   return (
     <LooperContainer>
-      <SampleList/>
+      <SampleList />
       <MusicBox>
         <Metronome />
         <PatternMatrix />

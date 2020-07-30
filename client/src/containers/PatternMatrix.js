@@ -1,6 +1,6 @@
-import React, {Component}  from 'react';
-import {connect} from 'react-redux';
-import styled from'styled-components';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import styled from 'styled-components';
 import * as actions from '../actions/index';
 
 
@@ -16,7 +16,7 @@ border: 1px solid white;
     border-radius: 5px;
     width: 100%;
     height: 100%;
-    background: ${props => Math.floor(props.index / props.mode) %2 ? '#232323' : '#484848'};
+    background: ${props => Math.floor(props.index / props.mode) % 2 ? '#232323' : '#484848'};
     }
 &:checked {
     &:after {   
@@ -28,7 +28,7 @@ border: 1px solid white;
     background: #e4c986;
     }
 }  
-`  
+`
 
 const MatrixContainer = styled.div`
 display:flex;
@@ -59,26 +59,26 @@ border-style: none;
 class PatternMatrix extends Component {
 
 
-    getmode(){
-        return this.props.metronome.mode/8 >= 3 ? this.props.metronome.mode / 8 : this.props.metronome.mode/ 4 ; 
+    getmode() {
+        return this.props.metronome.mode / 8 >= 3 ? this.props.metronome.mode / 8 : this.props.metronome.mode / 4;
     }
 
-    renderPattern(){
-       return Object.keys(this.props.patterns).map((key)=> {
-            const row = this.props.patterns[key].map((ele,index)=>{
-                return <Case key={key+"case"+index} 
-                            type="checkbox" checked={ele}
-                            index= {index} mode={this.getmode()}
-                            onClick={()=>this.props.switchCase(key, index)} />
+    renderPattern() {
+        return Object.keys(this.props.patterns).map((key) => {
+            const row = this.props.patterns[key].map((ele, index) => {
+                return <Case key={key + "case" + index}
+                    type="checkbox" checked={ele}
+                    index={index} mode={this.getmode()}
+                    onClick={() => this.props.switchCase(key, index)} />
             });
-            row.push(<DeleteButton key={"delete"+key} onClick={()=>this.props.deleteChannel(key)}>X</DeleteButton>);
+            row.push(<DeleteButton key={"delete" + key} onClick={() => this.props.deleteChannel(key)}>X</DeleteButton>);
             return <Row key={key}>{row}</Row>
         });
-            
+
     }
 
-    render (){
-       return (
+    render() {
+        return (
             <MatrixContainer>
                 {this.renderPattern()}
             </MatrixContainer>);
@@ -86,8 +86,8 @@ class PatternMatrix extends Component {
 
 }
 
-function mapStateToProps({patterns, metronome }){
-    return { patterns, metronome};
+function mapStateToProps({ patterns, metronome }) {
+    return { patterns, metronome };
 }
 
 export default connect(mapStateToProps, actions)(PatternMatrix);

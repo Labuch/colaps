@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import { createGlobalStyle } from 'styled-components';
 
@@ -20,21 +20,21 @@ const GlobalStyle = createGlobalStyle`
 
 
 class App extends Component {
-    componentDidMount(){
+    componentDidMount() {
         this.props.fetchUser();
     }
-    render(){
+    render() {
         return (
-                <BrowserRouter>
-                    <div className="App">
+            <BrowserRouter>
+                <div className="App">
 
-                        <Header/>
-                        <Route exact path="/" component={Landing}/>
-                        <Route exact path="/SampleLooper" component={Looper}/>
-                        <Route exact path="/SampleLibrary" component={SampleLibrary}/>
-                        <GlobalStyle/>
-                    </div>
-                </BrowserRouter>
+                    <Header />
+                    <Route exact path="/" component={Landing} />
+                    <Route exact path="/SampleLooper" component={Looper} />
+                    <Route exact path="/SampleLibrary" component={SampleLibrary} />
+                    <GlobalStyle />
+                </div>
+            </BrowserRouter>
 
         );
     }

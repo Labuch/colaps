@@ -1,5 +1,5 @@
-import React, {Component}  from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 
 import SampleForm from './SampleForm';
@@ -7,16 +7,16 @@ import SamplesList from './SamplesList';
 
 class SampleLibrary extends Component {
 
-    render(){
+    render() {
         return (<div>
-                <SamplesList/>
-                <SampleForm/>
+            <SamplesList />
+            <SampleForm />
         </div>)
     }
 }
 
-function mapStateToProps({samples, metronome}){
-    return { samples , mode: metronome.mode };
+function mapStateToProps({ samples, metronome }) {
+    return { samples, mode: metronome.mode };
 }
 
 

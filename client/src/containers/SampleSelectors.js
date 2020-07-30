@@ -1,6 +1,6 @@
-import React, {Component}  from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 
 import mutedImage from '../assets/muted.png';
@@ -90,42 +90,41 @@ min-width: 150px;
 
 class SampleList extends Component {
 
-    constructor(props)
-    {
+    constructor(props) {
         super(props);
-        {this.props.fetchSamples()}
+        { this.props.fetchSamples() }
     }
 
-    renderAddChannelButton(){
+    renderAddChannelButton() {
         return (
-                <Button onClick={()=>this.props.addChannel(this.props.mode)}>Add</Button>
+            <Button onClick={() => this.props.addChannel(this.props.mode)}>Add</Button>
         )
     }
 
-    renderSampleSelector(){
-       return Object.keys(this.props.samples).map((key,index)=>{
-           return (
-           <SampleRow key={key}>
-                <ChannelNumber className="ui label large">{index+1}</ChannelNumber>
-                <SampleSelector  key={"select"+key} value={this.props.samples[key].sample}
-                    onChange={(e)=>this.props.setSample(key, e.target.value)}>
-                    {this.props.library.map(item =>
-                        <option key={"option"+item._id} value={item._id}>{item.name}</option>
-                    )}
-                </SampleSelector>
-                <MuteButton key={"muteButton"+key} checked={this.props.samples[key].muted} onClick={()=>this.props.switchSoundChannel(key)} type="checkbox"/>
-            </SampleRow>)
-       });
+    renderSampleSelector() {
+        return Object.keys(this.props.samples).map((key, index) => {
+            return (
+                <SampleRow key={key}>
+                    <ChannelNumber className="ui label large">{index + 1}</ChannelNumber>
+                    <SampleSelector key={"select" + key} value={this.props.samples[key].sample}
+                        onChange={(e) => this.props.setSample(key, e.target.value)}>
+                        {this.props.library.map(item =>
+                            <option key={"option" + item._id} value={item._id}>{item.name}</option>
+                        )}
+                    </SampleSelector>
+                    <MuteButton key={"muteButton" + key} checked={this.props.samples[key].muted} onClick={() => this.props.switchSoundChannel(key)} type="checkbox" />
+                </SampleRow>)
+        });
     }
 
 
-    render (){
+    render() {
         return (
             <SidebarContainer>
-                <Blanck/>
+                <Blanck />
                 <SampleSelectorContainer>
-                {this.renderSampleSelector()}
-                {this.renderAddChannelButton()}
+                    {this.renderSampleSelector()}
+                    {this.renderAddChannelButton()}
                 </SampleSelectorContainer>
             </SidebarContainer>);
     }
@@ -133,8 +132,8 @@ class SampleList extends Component {
 }
 
 
-function mapStateToProps({samples, metronome, library}){
-    return { samples , mode: metronome.mode , library};
+function mapStateToProps({ samples, metronome, library }) {
+    return { samples, mode: metronome.mode, library };
 }
 
 

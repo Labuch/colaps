@@ -1,5 +1,5 @@
-import React, {Component}  from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import * as actions from '../actions/index';
 import styled from 'styled-components';
 
@@ -13,13 +13,8 @@ align-content:center;
 `
 const PlayerRow = styled.div`
 flex:1 1 250px;
-display:flex;
-flex-direction:row;
-
 `
-
 const Range = styled.input`
-
 `
 
 const StyledButton = styled.button`
@@ -67,41 +62,41 @@ border-radius:0.3rem;
 
 class Player extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.chargeSequence();
     }
 
-       render() {
+    render() {
         return (
             <ControlBar>
-               <PlayerRow>
-                <StyledButton onClick={()=>this.props.startMetronome()}  disabled={this.props.metronome.running ? "disabled":""}  >
-                    <i className="play icon"></i>
+                <PlayerRow>
+                    <StyledButton onClick={() => this.props.startMetronome()} disabled={this.props.metronome.running ? "disabled" : ""}  >
+                        <i className="play icon"></i>
                     Play
                 </StyledButton >
-                <StyledButton  onClick={()=>this.props.stopMetronome()}  disabled={!this.props.metronome.running ? "disabled":""}>
-                    <i className="pause icon"></i>
+                    <StyledButton onClick={() => this.props.stopMetronome()} disabled={!this.props.metronome.running ? "disabled" : ""}>
+                        <i className="pause icon"></i>
                     Pause
                 </StyledButton>
-                <ModeSelector>
-                        <ModeButton onClick={()=>this.props.setMode(12)} >3/4</ModeButton>
-                        <ModeButton onClick={()=>this.props.setMode(16)} >4/4</ModeButton>
-                        <ModeButton  onClick={()=>this.props.setMode(24)} >6/4</ModeButton >
-                        <ModeButton  onClick={()=>this.props.setMode(32)} >8/4</ModeButton >
-                </ModeSelector>
-               </PlayerRow>
-               <PlayerRow>
-                
-                <Label>Bpm : {this.props.metronome.tempo}</Label>
-                <Range max="220" min="60" step="1" type="range" value={this.props.metronome.tempo} onChange={(e)=>this.props.setTempo(e.target.value)} />
-                    <StyledButton onClick={ ()=>this.props.saveSequence({parameters: {patterns: this.props.patterns, samples: this.props.samples}})} >
+                    <ModeSelector>
+                        <ModeButton onClick={() => this.props.setMode(12)} >3/4</ModeButton>
+                        <ModeButton onClick={() => this.props.setMode(16)} >4/4</ModeButton>
+                        <ModeButton onClick={() => this.props.setMode(24)} >6/4</ModeButton >
+                        <ModeButton onClick={() => this.props.setMode(32)} >8/4</ModeButton >
+                    </ModeSelector>
+                </PlayerRow>
+                <PlayerRow>
+
+                    <Label>Bpm : {this.props.metronome.tempo}</Label>
+                    <Range max="220" min="60" step="1" type="range" value={this.props.metronome.tempo} onChange={(e) => this.props.setTempo(e.target.value)} />
+                    <StyledButton onClick={() => this.props.saveSequence({ parameters: { patterns: this.props.patterns, samples: this.props.samples } })} >
                         <i className="save icon"></i>
                         SAVE
                     </StyledButton>
-                    <StyledButton onClick={()=>this.props.chargeSequence()} >
+                    <StyledButton onClick={() => this.props.chargeSequence()} >
                         IMPORT
                     </StyledButton>
-               </PlayerRow>
+                </PlayerRow>
             </ControlBar>
 
 
@@ -110,8 +105,8 @@ class Player extends Component {
 
 }
 
-function mapStateToProps({metronome, patterns, samples}){
-    return { metronome,  patterns , samples };
+function mapStateToProps({ metronome, patterns, samples }) {
+    return { metronome, patterns, samples };
 }
 
 export default connect(mapStateToProps, actions)(Player);

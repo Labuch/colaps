@@ -3,11 +3,11 @@ const passport = require('passport');
 
 module.exports = (app) => {
 
-   app.get(
+    app.get(
         '/auth/facebook',
         passport.authenticate('facebook',
             {
-                scope:'email'
+                scope: 'email'
             }
         )
     );
@@ -18,7 +18,7 @@ module.exports = (app) => {
             res.redirect('/SampleLooper')
         }
     );
-    app.get('/api/logout',(req, res) => {
+    app.get('/api/logout', (req, res) => {
         console.log(req);
         req.logout();
         res.redirect('/');

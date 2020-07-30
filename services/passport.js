@@ -27,13 +27,12 @@ passport.use(
 
         },
         async (accessToken, refreshToken, profile, done) => {
-            const existingUser = await User.findOne({facebookId: profile.id});
-            if (existingUser)
-            {
+            const existingUser = await User.findOne({ facebookId: profile.id });
+            if (existingUser) {
                 //we already a user with this id
                 return done(null, existingUser)
             }
-            const user = await new User({facebookId: profile.id}).save();
+            const user = await new User({ facebookId: profile.id }).save();
             done(null, user);
 
         }

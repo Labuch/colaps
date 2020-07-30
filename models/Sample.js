@@ -5,7 +5,7 @@ const SampleSchema = new Schema({
 
     name: String,
     buffer: String,
-    _user: {type: Schema.Types.ObjectId, ref:'User'}
+    _user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
 mongoose.model('samples', SampleSchema);

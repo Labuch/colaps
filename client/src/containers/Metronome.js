@@ -1,5 +1,5 @@
-import React, {Component}  from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import * as actions from '../actions/index';
 
@@ -9,7 +9,7 @@ border-radius: 50%;
 width: 20px;
 height: 20px;
 margin: 2px;
-background: ${props => props.checked ? 'white' : '#906032' };
+background: ${props => props.checked ? 'white' : '#906032'};
 `;
 
 const MetronomeRow = styled.div`
@@ -26,22 +26,22 @@ const MetronomeRow = styled.div`
 
 class Metronome extends Component {
 
-    componentWillMount(){
+    componentWillMount() {
         this.props.initMetronome();
     }
 
-    renderBeet(){
+    renderBeet() {
 
-        const caseNumber = this.props.metronome.mode ;
+        const caseNumber = this.props.metronome.mode;
         const cases = [];
-        for ( var i = 0; i < caseNumber; i++ ){
-            cases.push(<BeetCase key={"beetCase"+i}  checked= {i === this.props.metronome.count}/>                   
+        for (var i = 0; i < caseNumber; i++) {
+            cases.push(<BeetCase key={"beetCase" + i} checked={i === this.props.metronome.count} />
             );
         }
         return cases;
 
     }
-    render (){
+    render() {
         return (
             <MetronomeRow >
                 {this.renderBeet()}
@@ -50,7 +50,7 @@ class Metronome extends Component {
 
 }
 
- function mapStateToProps({metronome}){
+function mapStateToProps({ metronome }) {
     return { metronome };
 }
 
