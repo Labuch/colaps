@@ -6,15 +6,20 @@ import styled from 'styled-components';
 const Label = styled.label` 
 font-family: 'Digital';
 color:grey;
-width:fit-content;
+width:70px;
 padding:10px;
 justify-content:center;
 align-content:center;
 `
 const PlayerRow = styled.div`
-flex:1 1 250px;
+flex:1;
+flex-wrap: 1;
+max-height:40px;
+display:flex;
+justify-content: space-between;
 `
 const Range = styled.input`
+max-width:100px;
 `
 
 const StyledButton = styled.button`
@@ -33,6 +38,7 @@ border-style: none;
 const ModeSelector = styled.div`
 display:flex;
 flex-wrap:wrap;
+max-width:100px;
 `
 
 const ModeButton = styled.button`
@@ -50,13 +56,11 @@ border-style: none;
   }
 `
 
-
 const ControlBar = styled.div`
 background:black;
 padding:5px;
-display:flex;
+display:${props => props.mode > 23 ? 'flex' : ''}; 
 flex-direction:row;
-flex-wrap:wrap;
 border-radius:0.3rem;
 `
 
@@ -98,8 +102,6 @@ class Player extends Component {
                     </StyledButton>
                 </PlayerRow>
             </ControlBar>
-
-
         );
     }
 
