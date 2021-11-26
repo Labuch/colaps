@@ -93,13 +93,7 @@ class Player extends Component {
 
                     <Label>Bpm : {this.props.metronome.tempo}</Label>
                     <Range max="220" min="60" step="1" type="range" value={this.props.metronome.tempo} onChange={(e) => this.props.setTempo(e.target.value)} />
-                    <StyledButton onClick={() => this.props.saveSequence({ parameters: { patterns: this.props.patterns, samples: this.props.samples } })} >
-                        <i className="save icon"></i>
-                        SAVE
-                    </StyledButton>
-                    <StyledButton onClick={() => this.props.chargeSequence()} >
-                        IMPORT
-                    </StyledButton>
+                 
                 </PlayerRow>
             </ControlBar>
         );

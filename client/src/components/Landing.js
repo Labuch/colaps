@@ -50,10 +50,6 @@ const Landing = () => {
                 <Button to={'/SampleLooper'}>
                 Looper
                 </Button>
-
-                <Button to={'/SampleLibrary'}>
-                    Sample Library
-                </Button> 
             </Row>
             
         </Content>
