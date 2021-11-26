@@ -1,5 +1,6 @@
 import {FETCH_SAMPLES, START_METRONOME, TICK_METRONOME} from '../actions/types';
 import _ from 'lodash';
+import {LIST_SAMPLE} from '../constante'
 
 class AudioContextHandler {
 
@@ -14,17 +15,16 @@ class AudioContextHandler {
 
         if (state.lastAction.type === FETCH_SAMPLES)
         {
-            state.lastAction.payload.forEach((sample)=>{
-                var binarydata = sample.buffer.split(',')[1];
-                var buf = Buffer.from(binarydata, 'base64');
-                var arrayBuffer = new ArrayBuffer(buf.length);
-                var view = new Uint8Array(arrayBuffer);
-                for (var i = 0; i < buf.length; ++i) {
-                    view[i] = buf[i];
-                }
-                ctx.decodeAudioData(arrayBuffer, function(bufferdecoded) {
-                    audioBuffers[sample._id] = bufferdecoded;
-                });
+            LIST_SAMPLE.forEach((name)=>{
+                const request = new XMLHttpRequest();
+                request.open('GET','sample/'+ name +'.wav', true);
+                request.responseType = 'arraybuffer';
+                request.onload = function() {
+                    ctx.decodeAudioData(request.response, function(buffer) {
+                        audioBuffers[name] = buffer;
+                    });
+                };
+                request.send();
             });
         }
 

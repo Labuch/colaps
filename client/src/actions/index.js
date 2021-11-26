@@ -48,8 +48,7 @@ export const playSample = (sampleId) => async dispatch => {
 
 
 export const fetchSamples = () => async dispatch => {
-    const res = await axios.get('/api/samples');
-    dispatch({ type: FETCH_SAMPLES, payload: res.data });
+    dispatch({ type: FETCH_SAMPLES});
 };
 
 export const initMetronome = () => async dispatch => {

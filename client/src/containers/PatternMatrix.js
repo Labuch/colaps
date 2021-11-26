@@ -69,6 +69,7 @@ class PatternMatrix extends Component {
                 return <Case key={key + "case" + index}
                     type="checkbox" checked={ele}
                     index={index} mode={this.getmode()}
+                    onChange={()=>{}}
                     onClick={() => this.props.switchCase(key, index)} />
             });
             row.push(<DeleteButton key={"delete" + key} onClick={() => this.props.deleteChannel(key)}>X</DeleteButton>);

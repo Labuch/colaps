@@ -37,7 +37,6 @@ class App extends Component {
                     <Header />
                     <Route exact path="/" component={Landing} />
                     <Route exact path="/SampleLooper" component={Looper} />
-                    <Route exact path="/SampleLibrary" component={SampleLibrary} />
                     <GlobalStyle />
                 </div>
             </BrowserRouter>

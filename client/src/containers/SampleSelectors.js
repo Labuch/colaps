@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import * as actions from '../actions/index';
+import { LIST_SAMPLE } from '../constante'
 
 import mutedImage from '../assets/muted.png';
 import unmutedImage from '../assets/unmuted.png';
@@ -108,11 +109,10 @@ class SampleList extends Component {
                     <ChannelNumber className="ui label large">{index + 1}</ChannelNumber>
                     <SampleSelector key={"select" + key} value={this.props.samples[key].sample}
                         onChange={(e) => this.props.setSample(key, e.target.value)}>
-                        {this.props.library.map(item =>
-                            <option key={"option" + item._id} value={item._id}>{item.name}</option>
-                        )}
+                        {LIST_SAMPLE.map( item =>
+                        <option key={"option"+item} value={item}>{item}</option>)}
                     </SampleSelector>
-                    <MuteButton key={"muteButton" + key} checked={this.props.samples[key].muted} onClick={() => this.props.switchSoundChannel(key)} type="checkbox" />
+                    <MuteButton key={"muteButton" + key} checked={this.props.samples[key].muted} onChange={()=>{}} onClick={() => this.props.switchSoundChannel(key)} type="checkbox" />
                 </SampleRow>)
         });
     }
