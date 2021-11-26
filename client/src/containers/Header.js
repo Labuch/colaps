@@ -16,24 +16,6 @@ const HeaderLogo = styled(Link)`
 
 class Header extends Component {
 
-    renderContent(){
-        switch(this.props.auth){
-            case null:
-                return ;
-            case false:
-                return (
-                    <a className="ui button blue " href="/auth/facebook">
-                        Login with facebook
-                    </a>
-                );
-            default :
-                return (
-                    <a className="ui button blue " href="/api/logout">
-                        Logout
-                    </a>
-                );
-        }
-    }
 
     render(){
         return (
@@ -41,9 +23,6 @@ class Header extends Component {
                     <HeaderLogo to={this.props.auth ? '/': ''} >
                         COLAPS
                     </HeaderLogo>
-                    <ul className="row">
-                        {this.renderContent()}
-                    </ul>
                 </HeaderContainer>
            
         );
